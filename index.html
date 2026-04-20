@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método Grez - Plan Detox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <header class="bg-[#075af5] text-white py-6 md:py-8 px-4 text-center shadow-lg">
+        <h1 class="text-2xl md:text-3xl font-bold">Método Grez: Programa Detox</h1>
+        <p class="text-blue-100 text-sm md:text-base mt-1">Plan de 15 días para resetear tu metabolismo.</p>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-4">
+        
+        <div class="grid grid-cols-3 gap-2 md:gap-4 mb-6 md:mb-8">
+            <div class="bg-blue-50 p-3 md:p-4 rounded-xl md:rounded-2xl text-center shadow-sm border border-blue-100">
+                <p class="text-[9px] md:text-[10px] uppercase font-bold text-[#075af5]">Inicial</p>
+                <p id="pesoInicial" class="text-sm md:text-lg font-bold text-slate-800">-- kg</p>
+            </div>
+            <div class="bg-blue-50 p-3 md:p-4 rounded-xl md:rounded-2xl text-center shadow-sm border border-blue-100">
+                <p class="text-[9px] md:text-[10px] uppercase font-bold text-[#075af5]">Actual</p>
+                <p id="pesoActual" class="text-sm md:text-lg font-bold text-slate-800">-- kg</p>
+            </div>
+            <div class="bg-[#075af5] p-3 md:p-4 rounded-xl md:rounded-2xl text-center shadow-md">
+                <p class="text-[9px] md:text-[10px] uppercase font-bold text-white">Perdidos</p>
+                <p id="kilosPerdidos" class="text-sm md:text-lg font-bold text-white">-- kg</p>
+            </div>
+        </div>
+
+        <section id="seguimiento" class="bg-white p-4 md:p-6 rounded-2xl shadow-md mb-6 md:mb-8">
+            <h2 class="titulo-seccion">📈 Control de Peso Diario</h2>
+            <div class="chart-container">
+                <canvas id="weightChart"></canvas>
+            </div>
+        </section>
+
+        <h2 class="titulo-seccion">📅 Menú</h2>
+        <div class="scroll-container flex gap-4 overflow-x-auto pb-4 snap-x">
+            <div id="calendarGrid" class="flex gap-4"></div>
+        </div>
+        
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

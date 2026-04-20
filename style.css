@@ -1,0 +1,55 @@
+body {
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+}
+
+@media (min-width: 768px) {
+    .chart-container {
+        height: 350px;
+    }
+}
+
+.scroll-container {
+    overflow-x: auto;
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 6px;
+}
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #075af5;
+    border-radius: 10px;
+}
+
+.day-card {
+    flex: 0 0 240px;
+    min-height: 160px;
+    border: 1px solid #e2e8f0;
+}
+
+.titulo-seccion {
+    font-size: 1.15rem;
+    font-weight: 700;   
+    margin-bottom: 1rem; 
+    color: #0544b8; /* Azul oscuro para mejor contraste */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;        
+}
+
+@media (min-width: 768px) {
+    .titulo-seccion {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+}
