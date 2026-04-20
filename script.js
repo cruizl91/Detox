@@ -1,3 +1,4 @@
+// URL DE LECTURA (CSV)
 const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQwBGeDAks-N3P1UsOK2JiKfg2SnIkRMA-OfifUWM5qM_LeKVwYenmpvaYaVMXtsgKqsqCKG30d2bwF/pub?output=csv';
 
 const menu = [
@@ -18,11 +19,38 @@ const menu = [
     { d: "Día 15", am: "Omelet final", pm: "Proteína + Ensalada verde" }
 ];
 
+// --- Inyección del Layout (Header y Footer) ---
+function renderLayout() {
+const headerHTML = `
+        <header class="main-header">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Logo Método Grez" class="main-logo">
+            </div>
+            <div class="header-text">
+                <h1 class="text-xl md:text-2xl font-bold leading-tight">Método Grez: Programa Detox</h1>
+                <p class="text-blue-100 text-[10px] md:text-sm mt-1">Plan de 15 días para resetear tu metabolismo.</p>
+            </div>
+        </header>
+    `;
+
+    const footerHTML = `
+        <footer class="main-footer">
+            <div class="max-w-4xl mx-auto px-4">
+                <p class="text-sm font-semibold tracking-wide">Panel de Control Personal</p>
+                <p class="text-blue-200 text-xs mt-2">© 2026. Carlos Ruiz Leiva.</p>
+            </div>
+        </footer>
+    `;
+
+    document.getElementById('header-app').innerHTML = headerHTML;
+    document.getElementById('footer-app').innerHTML = footerHTML;
+}
+
 function renderMenu() {
     const grid = document.getElementById('calendarGrid');
     if (!grid) return;
     grid.innerHTML = menu.map(item => `
-        <div class="day-card bg-white p-4 rounded-xl shadow-sm snap-start min-w-[250px] border border-gray-200">
+        <div class="day-card bg-white p-4 rounded-xl shadow-sm snap-start border border-gray-200">
             <span class="text-[#075af5] font-bold text-[10px] uppercase tracking-wider">${item.d}</span>
             <div class="mt-3 space-y-2">
                 <p class="text-xs text-gray-700"><strong>Desayuno:</strong> ${item.am}</p>
@@ -67,12 +95,11 @@ function updateDashboard(labels, weights) {
     const inicial = weights[0];
     const actual = weights[weights.length - 1];
     const perdidos = (inicial - actual).toFixed(1);
-    const elInicial = document.getElementById('pesoInicial');
-    const elActual = document.getElementById('pesoActual');
-    const elPerdidos = document.getElementById('kilosPerdidos');
-    if(elInicial) elInicial.textContent = `${inicial} kg`;
-    if(elActual) elActual.textContent = `${actual} kg`;
-    if(elPerdidos) elPerdidos.textContent = perdidos >= 0 ? `${perdidos} kg` : `+${Math.abs(perdidos).toFixed(1)} kg`;
+    
+    document.getElementById('pesoInicial').textContent = `${inicial} kg`;
+    document.getElementById('pesoActual').textContent = `${actual} kg`;
+    document.getElementById('kilosPerdidos').textContent = perdidos >= 0 ? `${perdidos} kg` : `+${Math.abs(perdidos).toFixed(1)} kg`;
+    
     renderChart(labels, weights);
 }
 
@@ -93,7 +120,8 @@ function renderChart(labels, weights) {
                 tension: 0.4,
                 borderWidth: 3,
                 pointBackgroundColor: '#075af5',
-                pointRadius: 4
+                pointRadius: 4,
+                pointHitRadius: 15
             }]
         },
         options: {
@@ -108,7 +136,9 @@ function renderChart(labels, weights) {
     });
 }
 
+// --- Inicialización ---
 window.onload = () => {
+    renderLayout(); // Inyecta el header y footer primero
     renderMenu();
     loadData();
 };

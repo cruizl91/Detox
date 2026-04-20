@@ -1,33 +1,134 @@
+/* =========================================
+   VARIABLES Y RESET
+   ========================================= */
+:root {
+    --azul-principal: #075af5;
+    --azul-oscuro: #0544b8;
+    --azul-claro: #ebf2ff;
+}
+
 body {
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
 }
 
+/* =========================================
+   ENCABEZADO (HEADER) Y LOGO
+   ========================================= */
+.main-header {
+    background-color: var(--azul-principal);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    width: 70px; /* Tamaño ideal para celulares */
+    height: auto;
+    margin: 0;
+    padding-right: 1rem;
+    margin-right: 1rem;
+    border-right: 2px solid rgba(255, 255, 255, 0.4); /* Línea separadora "|" */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Evita que el logo se deforme con textos largos */
+}
+
+.main-logo {
+    max-width: 130%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.header-text {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* =========================================
+   PIE DE PÁGINA (FOOTER)
+   ========================================= */
+.main-footer {
+    background-color: var(--azul-principal);
+    color: white;
+    padding: 1.5rem 1rem;
+    margin-top: auto; /* Mantiene el footer pegado al fondo de la pantalla */
+    text-align: center;
+}
+
+/* =========================================
+   MÉTRICAS SUPERIORES (KILOS)
+   ========================================= */
+.card-metrica {
+    background-color: var(--azul-claro);
+    padding: 0.75rem;
+    border-radius: 1rem;
+    text-align: center;
+    border: 1px solid #dbeafe;
+}
+
+.bg-blue-highlight {
+    background-color: var(--azul-principal);
+    border: none;
+}
+
+.etiqueta-metrica {
+    font-size: 9px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--azul-principal);
+}
+
+.valor-metrica {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* =========================================
+   TÍTULOS Y GRÁFICO
+   ========================================= */
+.titulo-seccion {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--azul-oscuro);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .chart-container {
     position: relative;
     width: 100%;
-    height: 250px;
+    height: 250px; /* Altura optimizada para celulares */
 }
 
-@media (min-width: 768px) {
-    .chart-container {
-        height: 350px;
-    }
-}
-
+/* =========================================
+   MENÚ DESLIZABLE (SCROLL HORIZONTAL)
+   ========================================= */
 .scroll-container {
     overflow-x: auto;
     display: flex;
     gap: 1rem;
     padding-bottom: 1rem;
-    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--azul-principal) transparent;
+    -webkit-overflow-scrolling: touch; /* Deslizamiento suave en iOS */
 }
 
+/* Diseño de la barra de scroll para Chrome/Safari */
 .scroll-container::-webkit-scrollbar {
     height: 6px;
 }
 .scroll-container::-webkit-scrollbar-thumb {
-    background-color: #075af5;
+    background-color: var(--azul-principal);
     border-radius: 10px;
 }
 
@@ -35,19 +136,35 @@ body {
     flex: 0 0 240px;
     min-height: 160px;
     border: 1px solid #e2e8f0;
+    transition: transform 0.2s;
 }
 
-.titulo-seccion {
-    font-size: 1.15rem;
-    font-weight: 700;   
-    margin-bottom: 1rem; 
-    color: #0544b8; /* Azul oscuro para mejor contraste */
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;        
-}
-
+/* =========================================
+   ADAPTACIÓN PARA PANTALLAS GRANDES (PC/TABLET)
+   ========================================= */
 @media (min-width: 768px) {
+    .main-header {
+        padding: 1.5rem 2rem;
+    }
+    
+    .logo-container {
+        width: 100px;
+        padding-right: 1.5rem;
+        margin-right: 1.5rem;
+    }
+
+    .chart-container {
+        height: 350px;
+    }
+
+    .valor-metrica {
+        font-size: 1.25rem;
+    }
+
+    .etiqueta-metrica {
+        font-size: 10px;
+    }
+
     .titulo-seccion {
         font-size: 1.25rem;
         margin-bottom: 1.5rem;

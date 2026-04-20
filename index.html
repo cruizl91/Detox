@@ -8,27 +8,24 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen m-0">
 
-    <header class="bg-[#075af5] text-white py-6 md:py-8 px-4 text-center shadow-lg">
-        <h1 class="text-2xl md:text-3xl font-bold">Método Grez: Programa Detox</h1>
-        <p class="text-blue-100 text-sm md:text-base mt-1">Plan de 15 días para resetear tu metabolismo.</p>
-    </header>
+    <div id="header-app"></div>
 
-    <main class="max-w-4xl mx-auto p-4">
+    <main class="flex-1 w-full max-w-4xl mx-auto p-4">
         
         <div class="grid grid-cols-3 gap-2 md:gap-4 mb-6 md:mb-8">
-            <div class="bg-blue-50 p-3 md:p-4 rounded-xl md:rounded-2xl text-center shadow-sm border border-blue-100">
-                <p class="text-[9px] md:text-[10px] uppercase font-bold text-[#075af5]">Inicial</p>
-                <p id="pesoInicial" class="text-sm md:text-lg font-bold text-slate-800">-- kg</p>
+            <div class="card-metrica">
+                <p class="etiqueta-metrica">Inicial</p>
+                <p id="pesoInicial" class="valor-metrica">-- kg</p>
             </div>
-            <div class="bg-blue-50 p-3 md:p-4 rounded-xl md:rounded-2xl text-center shadow-sm border border-blue-100">
-                <p class="text-[9px] md:text-[10px] uppercase font-bold text-[#075af5]">Actual</p>
-                <p id="pesoActual" class="text-sm md:text-lg font-bold text-slate-800">-- kg</p>
+            <div class="card-metrica">
+                <p class="etiqueta-metrica">Actual</p>
+                <p id="pesoActual" class="valor-metrica">-- kg</p>
             </div>
-            <div class="bg-[#075af5] p-3 md:p-4 rounded-xl md:rounded-2xl text-center shadow-md">
-                <p class="text-[9px] md:text-[10px] uppercase font-bold text-white">Perdidos</p>
-                <p id="kilosPerdidos" class="text-sm md:text-lg font-bold text-white">-- kg</p>
+            <div class="card-metrica bg-blue-highlight">
+                <p class="etiqueta-metrica text-white">Perdidos</p>
+                <p id="kilosPerdidos" class="valor-metrica text-white">-- kg</p>
             </div>
         </div>
 
@@ -39,12 +36,14 @@
             </div>
         </section>
 
-        <h2 class="titulo-seccion">📅 Menú</h2>
-        <div class="scroll-container flex gap-4 overflow-x-auto pb-4 snap-x">
+        <h2 class="titulo-seccion">📅 Menú Diario</h2>
+        <div class="scroll-container">
             <div id="calendarGrid" class="flex gap-4"></div>
         </div>
         
     </main>
+
+    <div id="footer-app"></div>
 
     <script src="script.js"></script>
 </body>
